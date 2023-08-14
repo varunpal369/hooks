@@ -1,25 +1,32 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { createContext } from "react";
+import CompA from "./components/CompA";
+//import Counter from "./reducer/Counter";
+import InputChange from "./reducer/InputChange";
+import ComponatReducer from "./data/ComponatReducer";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+
+const FirstName = createContext();
+const LastName = createContext();
+const CityName = createContext();
+
+function App(){
+    return (
+        <>
+        <h1>This is App Demo</h1>
+        <InputChange/>
+        {/* <Counter/> */}
+        <FirstName.Provider value={"Varun"}>
+        <LastName.Provider value={"Pal"}>
+        <CityName.Provider value={"Kanpur"}>
+        <CompA/>
+        </CityName.Provider>
+        </LastName.Provider>
+        </FirstName.Provider>
+
+        <ComponatReducer/>
+        </>
+    )
 }
 
 export default App;
+export { FirstName, LastName, CityName };
